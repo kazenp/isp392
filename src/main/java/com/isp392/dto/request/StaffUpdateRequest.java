@@ -9,6 +9,13 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class StaffUpdateRequest {
+
     String password;
+
+    String staffEmail;
+
+    String staffPhone;
+
+    String staffName;
 
 }

@@ -40,23 +40,25 @@ public class StaffController {
 
     @GetMapping("/{staffId}")
     ApiResponse<StaffResponse> getStaff(@PathVariable long staffId, @AuthenticationPrincipal Jwt jwt) {
-
         String username = jwt.getClaimAsString("sub");
         StaffResponse staff = staffService.getStaff(staffId, username);
-
         ApiResponse<StaffResponse> apiResponse = new ApiResponse<>();
         apiResponse.setResult(staff);
         return apiResponse;
     }
 
     @PutMapping("/{staffId}")
-    StaffResponse updateStaff(@PathVariable long staffId, @RequestBody StaffUpdateRequest request) {
-        return staffService.updateStaff(staffId, request);
+    ApiResponse<StaffResponse> updateStaff(@PathVariable long staffId, @RequestBody StaffUpdateRequest request) {
+        ApiResponse<StaffResponse> apiResponse = new ApiResponse<>();
+        apiResponse.setResult(staffService.updateStaff(staffId, request));
+        return apiResponse;
     }
 
     @DeleteMapping("/{staffId}")
-    String deleteStaff(@PathVariable long staffId) {
+    ApiResponse<String> deleteStaff(@PathVariable long staffId) {
         staffService.deleteStaff(staffId);
-        return "Delete user successfully";
+        ApiResponse<String> apiResponse = new ApiResponse<>();
+        apiResponse.setResult("Delete user successfully");
+        return apiResponse;
     }
 }
