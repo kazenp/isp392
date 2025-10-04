@@ -15,7 +15,6 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "https://isp392-production.up.railway.app")
 @RestController
 @RequestMapping("/staff")
 @RequiredArgsConstructor
